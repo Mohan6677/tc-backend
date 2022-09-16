@@ -12,6 +12,7 @@ const { handleLogout, postLogin, getLogin } = require(`./routes/login`);
 const { getRegister, submitRegister } = require(`./routes/register`);
 const { getFacebookLogin, handleFacebookLogin } = require("./routes/facebook_login");
 const { getGoogleLogin, handleGoogleLogin } = require(`./routes/google_login`);
+const { getPayment, makePayment } = require(`./routes/payment`)
 
 const app = express();
 
@@ -57,6 +58,8 @@ app.get(`/auth/facebook`, getFacebookLogin);
 app.get(`/auth/facebook/callback`, handleFacebookLogin);
 app.get(`/auth/google`, getGoogleLogin);
 app.get(`/auth/google/callback`, handleGoogleLogin);
+app.get(`/payment`,getPayment);
+app.post('/payment',makePayment);
 
 app.listen(process.env.PORT, () => {
   console.log(`server running on port: ${process.env.PORT}`);
